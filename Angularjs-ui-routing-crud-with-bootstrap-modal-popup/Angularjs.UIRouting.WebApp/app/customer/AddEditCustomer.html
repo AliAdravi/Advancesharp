@@ -1,0 +1,81 @@
+﻿<div class="modal-content">
+    <form name="form" >
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{headerTitle}}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Full Name</label>
+                    <div class="col-lg-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="customer.FullName"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Address</label>
+                    <div class="col-lg-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="customer.Address"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">City</label>
+                    <div class="col-lg-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="customer.City"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Country</label>
+                    <div class="col-lg-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="customer.Country"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Zip Code</label>
+                    <div class="col-lg-8">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="customer.ZipCode"
+                               ng-required="true">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-3 control-label">Image</label>
+                    <div class="col-lg-8">
+                        <input type="file" nv-file-select="" uploader="uploader" accept="image/*" single />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button"
+                    ng-click="save()"
+                    ng-disabled="form.$invalid"
+                    class="btn btn-success">
+                Save changes
+            </button>
+            <button type="button"
+                    ng-click="cancel()"
+                    class="btn btn-danger"
+                    data-dismiss="modal">
+                Cancel
+            </button>
+
+            <div class="alert-danger" ng-if="error.length > 0 " ng-bind="error"></div>
+
+        </div>
+    </form>
+</div>

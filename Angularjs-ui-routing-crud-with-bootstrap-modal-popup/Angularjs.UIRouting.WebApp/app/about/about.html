@@ -1,0 +1,58 @@
+﻿    <h1 ng-bind="pageTitle"></h1>
+
+    <div class="alert alert-info">
+        <div>Sort By: {{sortBy}}</div>
+        <div>Descending: {{sortDescending}}</div>
+        <div>Search Text: {{searchText}}</div>
+    </div>
+
+    <div class="input-group">
+        <input type="text" 
+               ng-model="searchText"
+               class="form-control" 
+               placeholder="Enter search text" >
+        <span class="input-group-addon" id="basic-addon1">
+            <i class="glyphicon glyphicon-search"></i>
+        </span>
+    </div>
+
+    <table class="table table-hover ">
+        <tr class="alert-success">
+            <th>
+                <a ng-click="sortBy = 'name'; sortDescending = !sortDescending">
+                    Name
+                </a>
+                <span ng-show="sortBy == 'name' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'name' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
+            <th>
+                <a ng-click="sortBy = 'gendar'; sortDescending = !sortDescending">
+                    Gendar
+                </a>
+                <span ng-show="sortBy == 'gendar' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'gendar' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
+            <th>
+                <a ng-click="sortBy = 'age'; sortDescending = !sortDescending">
+                    Age
+                </a>
+                <span ng-show="sortBy == 'age' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'age' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
+            <th>
+                <a ng-click="sortBy = 'salary'; sortDescending = !sortDescending">
+                    Salary
+                </a>
+                <span ng-show="sortBy == 'salary' && !sortDescending" class="glyphicon glyphicon-chevron-down"></span>
+                <span ng-show="sortBy == 'salary' && sortDescending" class="glyphicon glyphicon-chevron-up"></span>
+            </th>
+        </tr>
+        <tr class="animate"
+            ng-repeat="person in peoples | filter: searchText | orderBy:sortBy:sortDescending ">
+            <td ng-bind="person.name"></td>
+            <td ng-bind="person.gendar"></td>
+            <td ng-bind="person.age"></td>
+            <td ng-bind="person.salary | currency"></td>
+        </tr>
+    </table>
+

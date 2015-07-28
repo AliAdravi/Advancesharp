@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+
+</head>
+<body ng-app="MyApp" class="animate">
+
+    <div class="navbar navbar-inverse navbar-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a sref="home" class="navbar-brand">Authentication</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref='home'>Home</a></li>
+                    <li><a ui-sref='customer'>Customer</a></li>
+                    <li><a ui-sref='about'>About</a></li>
+                    <li><a ui-sref='contact'>Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="loading-dialog" data-loading>
+        <h1>Loading</h1>
+    </div>
+        
+    <div class="container body-content">
+        <div class="alert-danger" ng-if="error.length > 0 "ng-bind="error"></div>
+        <div ui-view> </div>
+    </div>
+
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap.min.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-file-upload.js"></script>
+
+
+    <!-- Application files -->
+    <script src="app/app.js"></script>
+    <script src="app/home/homectrl.js"></script>
+    <script src="app/about/aboutctrl.js"></script>
+    <script src="app/contact/contactctrl.js"></script>
+    <script src="app/customer/customerCtrl.js"></script>
+    <script src="app/customer/customerContactCtrl.js"></script>
+
+    <!-- Application Services -->
+    <script src="app/services/Customer.js"></script>
+    <!-- Application Directives -->
+    <script src="app/directives/asCustomer.js"></script>
+</body>
+</html>

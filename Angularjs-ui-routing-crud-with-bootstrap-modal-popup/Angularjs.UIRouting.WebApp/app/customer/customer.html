@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="col-lg-10">
+        <h1>Manage Customers</h1>  
+    </div>
+    <div class="col-lg-2">
+        <button ng-click="addCustomer()" class="btn btn-success btn-lg">
+            <i class="glyphicon glyphicon-plus"></i> Add Customer
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3" style="border:1px solid #999; overflow-y:hidden">
+        <!-- Search customers -->
+        <h3>Search Customers</h3>
+        <div class="input-group">
+            <input type="text"
+                   ng-model="searchText"
+                   class="form-control"
+                   placeholder="Enter search text">
+            <span class="input-group-addon" id="basic-addon1">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+        </div>
+        
+        <div class="col-lg-12 customer-row animate" ng-repeat="customer in customers">
+            <as-customer></as-customer>
+        </div>
+    </div>
+    <div class="col-lg-9" style="border:1px solid #999; overflow-y:auto">
+        <div ui-view></div>
+    </div>
+</div>

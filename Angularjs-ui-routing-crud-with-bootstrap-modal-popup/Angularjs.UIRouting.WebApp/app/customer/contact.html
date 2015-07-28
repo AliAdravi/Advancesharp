@@ -1,0 +1,22 @@
+﻿
+<div class="form-horizontal">
+    <fieldset>
+        <legend>Contact Detail</legend>
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>S. No</th>
+                <th>Phone#</th>
+                <th>Fax</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="contact in contacts">
+                <td>#{{$index + 1}}</td>
+                <td>{{contact.Phone}}</td>
+                <td>{{contact.Fax}}</td>
+                <td>{{contact.Email}}</td>
+            </tr>
+        </table>
+
+    </fieldset>
+</div>

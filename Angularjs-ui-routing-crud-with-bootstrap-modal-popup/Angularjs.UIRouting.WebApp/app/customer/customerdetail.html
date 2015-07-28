@@ -1,0 +1,59 @@
+﻿
+<div class="form-horizontal">
+    <fieldset>
+        <legend>Customer Detail</legend>
+
+        <div class="col-lg-3">
+            <img ng-src="{{currentCustomer.Image ? currentCustomer.Image : 'customerimages/default-image.png'}}"
+                 class="img-circle"
+                 alt='customer image' />
+        </div>
+
+        <div class="col-lg-8">
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">Full Name</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="currentCustomer.FullName" disabled>
+                </div>
+                <div class="col-lg-1">
+                    <button ng-click="editCustomer(currentCustomer.CustomerId)" class="btn btn-primary">Edit</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">Address</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="currentCustomer.Address" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">City</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="currentCustomer.City" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">Country</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="currentCustomer.Country" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-3 control-label">Zip Code</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control" ng-model="currentCustomer.ZipCode" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-3">
+                    <a ui-sref="customer.detail.contact({contactCustomerId: currentCustomer.CustomerId})">Contact Detail</a>
+                </div>
+            </div>            
+        </div>
+
+    </fieldset>
+</div>
+
+<div ui-view></div>
+
+
+
