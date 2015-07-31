@@ -6,8 +6,8 @@ app.controller('customerCtrl', ['$scope', '$state', '$stateParams', '$modal', '$
     $scope.searchText = '';
     $scope.customers = searchCustomers();
     $scope.contacts = [];
-    $scope.customer = {};
-    $scope.currentCustomer = {};
+    $scope.customer = null;
+    $scope.currentCustomer = null;
 
 
     $scope.$watch('searchText', function (newVal, oldVal) {
@@ -54,28 +54,24 @@ app.controller('customerCtrl', ['$scope', '$state', '$stateParams', '$modal', '$
         Customer.newCustomer()
         .then(function (data) {
             $scope.customer = Customer.customer;
-            $scope.open();
+            $scope.open('sm');
         });
     }
 
-    // Add Customer
-    $scope.editCustomer = function (id) {
-        if (!id) return;
-        Customer.customerDetail(id)
-        .then(function (data) {
-            $scope.currentCustomer = Customer.currentCustomer;
-            $scope.customer = Customer.currentCustomer;
-            $scope.open();
-        });
+    // Edit Customer
+    $scope.editCustomer = function () {
+        $scope.customer = $scope.currentCustomer;
+        $scope.open('lg');
     }
 
     // Open model to add edit customer
-    $scope.open = function (size) {
-        $scope.headerTitle = "New Customer";
+    $scope.open = function (size) {        
         var modalInstance = $modal.open({
             animation: false,
+            backdrop: 'static',
             templateUrl: 'app/customer/AddEditCustomer.html',
-            controller: 'customerModalCtrl',            
+            controller: 'customerModalCtrl',
+            size: size,
             resolve: {
                 customer: function () {
                     return $scope.customer;
@@ -83,7 +79,6 @@ app.controller('customerCtrl', ['$scope', '$state', '$stateParams', '$modal', '$
             }
         });
         modalInstance.result.then(function (response) {
-            debugger;            
             $scope.currentCustomer = response;
             $state.go('customer.detail', { 'customerId': response.CustomerId });            
         }, function () {
@@ -98,6 +93,12 @@ app.controller('customerCtrl', ['$scope', '$state', '$stateParams', '$modal', '$
 app.controller('customerModalCtrl', ['$scope', '$modalInstance', 'Customer', 'customer', function ($scope, $modalInstance, Customer, customer) {
 
     $scope.customer = customer;
+    
+    if (customer.CustomerId > 0)
+        $scope.headerTitle = 'Edit Customer';
+    else
+        $scope.headerTitle = 'Add Customer';
+    
     $scope.save = function () {
         Customer.Save($scope.customer).then(function (response) {
             $modalInstance.close(response.data);

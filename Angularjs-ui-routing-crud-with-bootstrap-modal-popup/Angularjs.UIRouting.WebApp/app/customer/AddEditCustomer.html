@@ -1,7 +1,11 @@
 ﻿<div class="modal-content">
     <form name="form" >
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" 
+                    class="close" 
+                    ng-click="cancel()"
+                    data-dismiss="modal" 
+                    aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title">{{headerTitle}}</h4>
         </div>
         <div class="modal-body">
@@ -52,12 +56,6 @@
                                ng-required="true">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputEmail" class="col-lg-3 control-label">Image</label>
-                    <div class="col-lg-8">
-                        <input type="file" nv-file-select="" uploader="uploader" accept="image/*" single />
-                    </div>
-                </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -65,7 +63,7 @@
                     ng-click="save()"
                     ng-disabled="form.$invalid"
                     class="btn btn-success">
-                Save changes
+                Save
             </button>
             <button type="button"
                     ng-click="cancel()"

@@ -41,21 +41,7 @@
            // Save Customer
            customerService.Save = function (customer, files) {
                var deferred = $q.defer();
-               //return $http.post(baseUrl + "Save", customer)
-               $http({
-                   method: 'POST',
-                   url: baseUrl + "Save",
-                   //IMPORTANT!!! You might think this should be set to 'multipart/form-data' 
-                   // but this is not true because when we are sending up files the request 
-                   // needs to include a 'boundary' parameter which identifies the boundary 
-                   // name between parts in this multi-part request and setting the Content-type 
-                   // manually will not set this boundary parameter. For whatever reason, 
-                   // setting the Content-type to 'false' will force the request to automatically
-                   // populate the headers properly including the boundary parameter.
-                   headers: { 'Content-Type': 'application/json' },
-
-                   data: { model: customer, files: files }
-               })
+               return $http.post(baseUrl + "Save", customer)
                 .success(function (data) {
                     deferred.resolve(customerService.customer = data);
                 })
@@ -92,20 +78,7 @@
                })
                return deferred.promise;
            }
-
-           //// delete Customers
-           //customerService.contacts = function (id) {
-           //    var deferred = $q.defer();
-           //    return $http.post(baseUrl + "delete/" + id)
-           //         .success(function (data) {
-           //             deferred.resolve();
-           //         })
-           //    .error(function (error) {
-           //        deferred.reject(error);
-           //    })
-           //    return deferred.promise;
-           //}
-
+                      
            /*       CUSTOMER CONTACTS
             ************************************/
            customerService.customerContacts = function (id) {
